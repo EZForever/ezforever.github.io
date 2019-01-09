@@ -1,7 +1,7 @@
 //TODO Anchor: view-source:https://marked.js.org/
 
 function onHashChange() {
-  var hash = location.hash.slice(1) || "index.md";
+  var hash = location.hash.slice(1) || "main.md";
   $("body").animate({backgroundColor: "#446"}, "fast");
   $.ajax({
     url: hash,
