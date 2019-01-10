@@ -9,7 +9,7 @@ function onHashChange() {
     success: function(text) {
       try {
         $("#main").html(texme.render(text));
-        $("pre,code").each(function(i, block) {
+        $("pre").each(function(i, block) {
           hljs.highlightBlock(block);
         });
       } catch(e) {
