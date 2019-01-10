@@ -57,6 +57,10 @@ blockquote {
   }
 }
 
+#oops {
+ background-color: #fdd;
+}
+
 #footer {
   font-style: italic;
   font-size: 75%;

@@ -6,18 +6,17 @@ function onHashChange() {
   $.ajax({
     url: hash,
     cache: false,
+    error: onError,
     success: function(text) {
       try {
         $("#main").html(texme.render(text));
         $("pre").each(function(i, block) {
           hljs.highlightBlock(block);
         });
+        $("#oops").hide();
       } catch(e) {
-        $("body").animate({backgroundColor: "#644"}, "slow");
+        onError();
       }
-    },
-    error: function() {
-      $("body").animate({backgroundColor: "#644"}, "slow");
     },
     complete: function() {
       $("body").animate({backgroundColor: "#444"}, "fast");
@@ -25,10 +24,16 @@ function onHashChange() {
   });
 }
 
+function onError() {
+  $("body").animate({backgroundColor: "#644", scrollTop: 0}, "slow");
+  $("#oops").show();
+}
+
 $(document).ready(function() {
   window.addEventListener("hashchange", function(e) {
     e.preventDefault();
     onHashChange();
   });
+  $("#oops-retry").click(onHashChange);
   onHashChange();
 });
