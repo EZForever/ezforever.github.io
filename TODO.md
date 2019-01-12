@@ -10,5 +10,5 @@
 ## Pages & posts
 - [ ] `README_zh-CN.md` - Same document in Chinese
 - [ ] C Puzzles (Translation)
-- [ ] 8 reasons to hate Python (Translation)
+- [ ] 8 Reasons Python Sucks (Translation)
 

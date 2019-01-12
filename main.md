@@ -6,5 +6,5 @@
 - [TODO](#TODO.md) - Upcoming features/posts
 - [Markdown test page](#pages/test.md)
 
-## Articles
+## Posts
 *Coming soon*
