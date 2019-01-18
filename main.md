@@ -7,4 +7,5 @@
 - [Markdown test page](#pages/test.md)
 
 ## Posts
-*Coming soon*
+### 2019
+- [C Puzzles](#posts/2019/c-puzzles.md)
