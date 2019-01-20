@@ -1,7 +1,7 @@
 # [翻译] C Puzzles - 一些有趣的C语言问题
 [主页](#)
 
-大部分内容来自[这里](http://www.gowrikumar.com/c/index.php)，作者为Gowri Kumar，以CC BY-SA 3.0协议发布。除了翻译之外，本文对问题进行了重新排序，删除了一些过老无法复现的问题并增加了其它几个有趣的问题。
+大部分内容来自[这里](http://www.gowrikumar.com/c/index.php)，作者为Gowri Kumar，以CC BY-SA 3.0协议发布。除了翻译之外，本文对问题进行了重新整理，删除了一些过老无法复现的问题并增加了其它几个有趣的问题。
 
 ---
 **1** 下面的程序作用是遍历数组、显示每个元素的值。但是运行结果不是这样。
@@ -193,6 +193,180 @@ int CountBits(unsigned int x) {
     x = x & (x = 1);
   }
   return count;
+}
+```
+
+---
+**11** 这两个函数原型等价吗？
+```C
+int foobar();
+int foobar(void);
+```
+下面的程序能帮你找到答案，编译下试试：
+```C
+#include <stdio.h>
+
+void foobar1() {
+  printf("Hello foobar1!\n");
+}
+
+void foobar2(void) {
+  printf("Hello foobar2!\n");
+}
+
+int main() {
+  char ch = 'a';
+  foobar1();
+  foobar1(33, ch);
+  foobar2();
+  foobar2(33, ch);
+  return 0;
+}
+```
+
+---
+**12** 下面的程序会输出什么？为什么？
+```C
+#include <stdio.h>
+
+int main() {
+  float a = 12.5;
+  printf("%d\n", a);
+  printf("%d\n", *(int *)&a);
+  return 0;
+}
+```
+
+---
+**13** 如果把下面的**两个**文件编译到一起运行，结果会是什么？
+```C
+//file1.c
+int arr[80];
+
+//file2.c
+extern int *arr;
+int main() {
+  arr[1] = 100;
+  return 0;
+}
+```
+
+---
+**14** 解释下面程序的输出（当然不是`20`）。
+```C
+#include <stdio.h>
+
+int main() {
+  int a = 1;
+  switch(a) {
+    int b = 20;
+    case 1: printf("b is %d\n", b); break;
+    default: printf("b is %d\n", b); break;
+  }
+  return 0;
+}
+```
+
+---
+**15** 下面程序的输出是什么？当然也不是`40`（如果`sizeof(int) == 4`）。
+```C
+#include <stdio.h>
+#define SIZE 10
+
+void size(int arr[SIZE]) {
+  printf("size of array is %d\n", sizeof(arr));
+}
+
+int main() {
+  int arr[SIZE];
+  size(arr);
+  return 0;
+}
+```
+
+---
+**16** 这两次调用`scanf()`的区别是什么？
+```C
+#include <stdio.h>
+
+int main() {
+  char c;
+  scanf("%c", &c);
+  printf("%c\n", c);
+
+  scanf(" %c", &c);
+  printf("%c\n", c);
+  return 0;
+}
+```
+*提示：注意第二次调用时的空格。把它去掉，观察程序行为的变化。*
+
+---
+**17** 下面的程序会输出什么？
+```C
+#include <stdio.h>
+
+int main() {
+  int i = 10;
+  printf("i is %d\n", i);
+  printf("sizeof(i++) is %d\n", sizeof(i++));
+  printf("i is %d\n", i);
+  return 0;
+}
+```
+
+---
+**18** 为什么下面的程序编译的时候会报warning？（要知道把普通指针实参传给常指针形参是不会报warning的）
+```C
+#include <stdio.h>
+
+void foo(const char **p) {}
+
+int main(int argc, char **argv) {
+  foo(argv);
+  return 0;
+}
+```
+
+---
+**19** 下面程序的输出是什么？
+```C
+#include <stdio.h>
+
+int main() {
+  int i;
+  i = 1, 2, 3;
+  printf("i is %d\n", i);
+  return 0;
+}
+```
+
+---
+**20** 这是一个[逆波兰表达式](https://baike.baidu.com/item/逆波兰表达式/9841727)计算器的一部分代码。代码当中有一个（很多）bug，把它（们）找出来！已知`getop()`函数会为操作数、操作符、EOF等等返回相应的值。
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 80
+#define NUMBER '0'
+
+int getop(char []);
+void push(double);
+double pop(void);
+
+int main() {
+  int type;
+  char s[MAX];
+  while((type = getop(s)) != EOF) {
+    switch(type) {
+      case NUMBER: push(atof(s)); break;
+      case '+': push(pop() + pop()); break;
+      case '*': push(pop() * pop()); break;
+      case '-': push(pop() - pop()); break;
+      case '/': push(pop() / pop()); break;
+      //...
+    }
+  }
 }
 ```
 
