@@ -1,5 +1,6 @@
 # TODO
 [Main Page (If visiting from *.io)](#)  
+Finished things will still be here until next TODO update.
 
 ## Features
 - [ ] Fix ident bug in `<pre>` (should be in CSS)
@@ -10,6 +11,6 @@
 
 ## Pages & posts
 - [ ] `README_zh-CN.md` - Same document in Chinese
-- [ ] C Puzzles (Translation) (Working)
-- [ ] 8 Reasons Python Sucks (Translation)
+- [x] C Puzzles (Translation)
+- [ ] ~~8 Reasons Python Sucks (Translation)~~
 
