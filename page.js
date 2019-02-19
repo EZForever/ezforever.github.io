@@ -7,6 +7,7 @@ function isPreview() {
 
 function onHashChange() {
   var hash = location.hash.slice(1) || "main.md";
+  $("html").scrollTop(0);
   $("body").animate({backgroundColor: "#446"}, "fast");
   $.ajax({
     url: hash,
@@ -30,7 +31,7 @@ function onHashChange() {
 }
 
 function onError() {
-  $("body").animate({backgroundColor: "#644", scrollTop: 0}, "slow");
+  $("body").animate({backgroundColor: "#644"}, "slow");
   $("#oops").show();
 }
 

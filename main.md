@@ -8,4 +8,5 @@
 
 ## Posts
 ### 2019
-- [C Puzzles](#posts/2019/c-puzzles.md)
+- [C Puzzles, 1-20](#posts/2019/c-puzzles.md)
+- [C Puzzles, 21-49](#posts/2019/c-puzzles-2.md)
