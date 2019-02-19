@@ -1,11 +1,16 @@
 //TODO Anchor: view-source:https://marked.js.org/
 
+function isPreview() {
+  //If I'm debugging this locally
+  return /localhost|[^\.]127\./i.test(window.origin);
+}
+
 function onHashChange() {
   var hash = location.hash.slice(1) || "main.md";
   $("body").animate({backgroundColor: "#446"}, "fast");
   $.ajax({
     url: hash,
-    cache: false,
+    cache: !isPreview(),
     error: onError,
     success: function(text) {
       try {
