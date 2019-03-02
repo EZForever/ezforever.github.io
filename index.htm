@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>EZForever@GitHub</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">@import "styles.css"; @import "hljs.css";</style>
-    <script>window.texme={style:'none',renderOnLoad:false};</script>
-    <script src="https://cdn.jsdelivr.net/npm/texme"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
-    <script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/highlightjs"></script>
-    <script src="config.js"></script>
-    <script src="page.js"></script>
-  </head>
-  <body>
-    <main>
-      <code id="oops" style="display:none;">
-        Something failed to load. <a id="oops-retry" href="javascript:;">Try Again</a> or <a href="javascript:history.go(-1);">Go Back</a>.
-      </code>
-      <div id="main">
-        <p>Loading maybe...</p>
-      </div>
-      <hr />
-      <div id="footer">
-        <span id="footer-thanks">Inspired &amp; powered by <a href="https://github.com/susam/texme">TeXMe</a>.</span>
-        <span id="footer-license"><a href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a></span>
-      </div>
-    </main>
-  </body>
+    <head>
+        <title>EZForever@GitHub</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- jQuery -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+        <!-- script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script -->
+        <!-- highlight.js -->
+        <script src="https://cdn.jsdelivr.net/npm/highlightjs"></script>
+        <!-- TexMe -->
+        <script>window.texme={style:'none',renderOnLoad:false};</script>
+        <script src="https://cdn.jsdelivr.net/npm/texme"></script>
+        <!-- Gitment -->
+        <!-- link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css" / -->
+        <!-- script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script -->
+        <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css" />
+        <script src="https://billts.site/js/gitment.js"></script>
+        <!-- My own code -->
+        <style type="text/css">@import "styles.css"; @import "hljs.css";</style>
+        <script src="config.js"></script>
+        <script src="page.js"></script>
+    </head>
+    <body>
+        <main>
+            <code id="loading" style="display:none;">
+                <!-- &#8801; -->
+                <div id="loading-progress">Loading...</div>
+                <div id="loading-oops">
+                    Please <a id="loading-oops-retry" href="javascript:;">Try Again</a> or <a href="javascript:history.go(-1);">Go Back</a>.
+                </div>
+            </code>
+            <div id="main">
+                <p>Loading maybe...</p>
+            </div>
+            <hr />
+            <div id="footer">
+                <span id="footer-license"><a href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a></span>
+                <span id="footer-menu">
+                    <a id="footer-menu-comments" href="javascript:;">◆ 显示评论区</a>
+                </span>
+                <div id="footer-comments" style="display:none;"></div>
+            </div>
+        </main>
+    </body>
 </html>

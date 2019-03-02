@@ -21,19 +21,19 @@ img {
 }
 
 pre, code {
+  background: #eaeef3;
   border-radius: 3px;
-  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-family: Consolas, Liberation Mono, Menlo, Courier, monospace;
   font-size: 85%;
 }
 
-pre {
-  padding: 12px;
+code {
+  padding: .2em .4em;
 }
 
-code {
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: .2em .4em;
+.hljs code {
+  background: transparent;
+  padding: 0;
 }
 
 blockquote {
@@ -57,12 +57,14 @@ blockquote {
   }
 }
 
-#oops {
- background-color: #fdd;
+#loading {
+  position: fixed;
+  top: 0.5em;
+  left: 0.5em;
+  box-shadow: 0 0 5px #000;
 }
 
-#footer {
-  font-style: italic;
+#footer-menu {
   font-size: 75%;
 }
 

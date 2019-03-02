@@ -1,15 +1,8 @@
-/* Fetched from https://github.com/highlightjs/highlight.js/blob/master/src/styles/mono-blue.css on 20190110 */
-/*
-  Five-color theme from a single blue hue.
-*/
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #eaeef3;
-}
+/* Modified from https://github.com/highlightjs/highlight.js/blob/master/src/styles/mono-blue.css on 20190110 */
 
 .hljs {
+  overflow-x: auto;
+  padding: 0.5em;
   color: #00193a;
 }
 

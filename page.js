@@ -1,45 +1,60 @@
 //TODO Anchor: view-source:https://marked.js.org/
+(function() {
 
 function isPreview() {
-  //If I'm debugging this locally
-  return /localhost|[^\.]127\./i.test(window.origin);
+    //If I'm debugging this locally
+    return /localhost|[^\.]127\./i.test(window.origin);
 }
 
 function onHashChange() {
-  var hash = location.hash.slice(1) || "main.md";
-  $("html").scrollTop(0);
-  $("body").animate({backgroundColor: "#446"}, "fast");
-  $.ajax({
-    url: _Blog.contentPath + hash,
-    cache: !isPreview(),
-    error: onError,
-    success: function(text) {
-      try {
-        $("#main").html(texme.render(text));
-        $("pre").each(function(i, block) {
-          hljs.highlightBlock(block);
-        });
-        $("#oops").hide();
-      } catch(e) {
-        onError();
-      }
-    },
-    complete: function() {
-      $("body").animate({backgroundColor: "#444"}, "fast");
-    }
-  });
+    var hash = location.hash.slice(1) || "main.md";
+    $("html").scrollTop(0);
+    $("#loading-progress").text("Loading...");
+    $("#loading-oops").hide();
+    $("#loading").show();
+    $.ajax({
+        url: _Blog.contentPath + hash,
+        cache: !isPreview(),
+        error: onLoadError,
+        success: function(text) {
+            try {
+                $("#loading-progress").text("Rendering...");
+                $("#main").html(texme.render(text));
+                $("pre").each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+                $("#loading-progress").text("Loading comments...");
+                _Blog.gitment.id = hash;
+                new Gitment(_Blog.gitment).render("footer-comments");
+                $("#loading-progress").text("Loaded!");
+                $("#loading").fadeOut("slow");
+            } catch(e) {
+                onLoadError();
+            }
+        }
+    });
 }
 
-function onError() {
-  $("body").animate({backgroundColor: "#644"}, "slow");
-  $("#oops").show();
+function onLoadError() {
+    $("#loading-progress").text("Oops! Load failed.");
+    $("#loading-oops").show();
+}
+
+var CommentsState = 0;
+function onToggleComments() {
+    CommentsState = !CommentsState;
+    $("#footer-menu-comments").text((CommentsState ? "◇ 隐藏" : "◆ 显示") + "评论区");
+    $("#footer-comments").slideToggle("fast");
 }
 
 $(document).ready(function() {
-  window.addEventListener("hashchange", function(e) {
-    e.preventDefault();
+    window.addEventListener("hashchange", function(e) {
+        e.preventDefault();
+        onHashChange();
+    });
+    $("#loading-oops-retry").click(onHashChange);
+    $("#footer-menu-comments").click(onToggleComments);
     onHashChange();
-  });
-  $("#oops-retry").click(onHashChange);
-  onHashChange();
 });
+
+})();
