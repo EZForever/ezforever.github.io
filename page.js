@@ -10,7 +10,7 @@ function onHashChange() {
   $("html").scrollTop(0);
   $("body").animate({backgroundColor: "#446"}, "fast");
   $.ajax({
-    url: hash,
+    url: _Blog.contentPath + hash,
     cache: !isPreview(),
     error: onError,
     success: function(text) {
