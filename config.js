@@ -3,7 +3,7 @@ window._Blog = window._Blog || {
     "gitment": {
         id: "",
         owner: "EZForever",
-        repo: "https://github.com/EZForever/blog",
+        repo: "blog",
         perPage: 10,
         labels: ["wontfix"],
         oauth: {
