@@ -23,8 +23,11 @@ function onHashChange() {
                 $("pre").each(function(i, block) {
                     hljs.highlightBlock(block);
                 });
+                var title = $("main h1:first").text() || hash;
+                document.title = title + " - EZForever@GitHub";
                 $("#loading-progress").text("Loading comments...");
                 _Blog.gitment.id = hash;
+                _Blog.gitment.title = title;
                 new Gitment(_Blog.gitment).render("footer-comments");
                 $("#loading-progress").text("Loaded!");
                 $("#loading").fadeOut("slow");

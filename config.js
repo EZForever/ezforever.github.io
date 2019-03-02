@@ -2,6 +2,7 @@ window._Blog = window._Blog || {
     "contentPath": "/blog/",
     "gitment": {
         id: "",
+        title: "",
         owner: "EZForever",
         repo: "blog",
         perPage: 10,
