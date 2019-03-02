@@ -20,11 +20,12 @@ function onHashChange() {
             try {
                 $("#loading-progress").text("Rendering...");
                 $("#main").html(texme.render(text));
+                var title = $("main h1:first").text() || hash;
+                document.title = title + " - EZForever@GitHub";
                 $("pre").each(function(i, block) {
                     hljs.highlightBlock(block);
                 });
-                var title = $("main h1:first").text() || hash;
-                document.title = title + " - EZForever@GitHub";
+                $("main img").lazyload({effect : "fadeIn"}); 
                 $("#loading-progress").text("Loading comments...");
                 _Blog.gitment.id = hash;
                 _Blog.gitment.title = title;
@@ -39,7 +40,7 @@ function onHashChange() {
 }
 
 function onLoadError() {
-    $("#loading-progress").text("Oops! Load failed.");
+    $("#loading-progress").text("Oops! Something failed.");
     $("#loading-oops").show();
 }
 
