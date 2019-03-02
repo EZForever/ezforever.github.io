@@ -1,4 +1,3 @@
-//TODO Anchor: view-source:https://marked.js.org/
 (function() {
 
 function isPreview() {
@@ -8,7 +7,6 @@ function isPreview() {
 
 function onHashChange() {
     var hash = location.hash.slice(1) || "main.md";
-    $("html").scrollTop(0);
     $("#loading-progress").text("Loading...");
     $("#loading-oops").hide();
     $("#loading").show();
@@ -30,6 +28,7 @@ function onHashChange() {
                 _Blog.gitment.id = hash;
                 _Blog.gitment.title = title;
                 new Gitment(_Blog.gitment).render("footer-comments");
+                $("html").animate({"scrollTop":0}, "medium");
                 $("#loading-progress").text("Loaded!");
                 $("#loading").fadeOut("slow");
             } catch(e) {
