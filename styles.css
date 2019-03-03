@@ -95,6 +95,10 @@ blockquote {
     box-shadow: 1px 1px 2px #666;
 }
 
+#comments {
+    border-width: 1px 0 0 0;
+}
+
 #footer-menu {
     font-size: 85%;
 }

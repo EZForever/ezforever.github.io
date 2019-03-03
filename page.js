@@ -41,7 +41,7 @@ function renderPage(text, url) {
     //$("#loading-progress").text("Loading comments...");
     _Blog.gitment.id = url;
     _Blog.gitment.title = title;
-    new Gitment(_Blog.gitment).render("footer-comments");
+    new Gitment(_Blog.gitment).render("comments-gitment");
 
     $("#loading-progress").text("Loaded!");
     $("#loading").fadeOut("slow");
@@ -68,8 +68,8 @@ function onHashChange() {
 }
 
 function onToggleComments() {
-    $("#footer-menu-comments").text(($("#footer-comments").is(":visible") ? "◆ 显示" : "◇ 隐藏") + "评论区");
-    $("#footer-comments").slideToggle("fast");
+    $("#footer-menu-comments").text(($("#comments").is(":visible") ? "◆ 显示" : "◇ 隐藏") + "评论区");
+    $("#comments").slideToggle("fast");
 }
 
 marked.setOptions(_Blog.marked);
