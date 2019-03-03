@@ -1,5 +1,11 @@
 window._Blog = window._Blog || {
     "contentPath": "/blog",
+    "marked": {
+        "xhtml": true,
+        "highlight": function(code, lang) {
+            return lang ? hljs.highlight(lang, code).value : code;
+        }
+    },
     "gitment": {
         id: "",
         title: "",

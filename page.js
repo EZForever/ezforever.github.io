@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+var LastURL = "/";
+
 function isPreview() {
     //If I'm debugging this locally
     return /localhost|[^\.]127\./i.test(window.origin);
@@ -25,21 +27,16 @@ function fetchPage(url) {
     });
 }
 
-var LastURL = "/";
 function renderPage(text, url) {
     //$("#loading-progress").text("Rendering...");
     LastURL = url;
-    $("#main").html(texme.render(text));
+    $("#main").html(marked(text));
 
     var title = $("main h1:first").text() || url;
     document.title = title + " - EZForever@GitHub";
     $("#footer-menu-source").attr("href", _Blog.contentPath + url);
 
-    $("pre").each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
-
-    $("#main img").lazyload({effect : "fadeIn"}); 
+    $("main img").lazyload({effect : "fadeIn"}); 
 
     //$("#loading-progress").text("Loading comments...");
     _Blog.gitment.id = url;
@@ -58,7 +55,7 @@ function onLoadError() {
 function onHashChange() {
     var hash = location.hash.slice(1).split("#");
     if(hash[0][0] == "/") {
-        if(hash[0] != LastURL || LastURL == "/")
+        if(hash[0] != LastURL || hash[0] == "/")
             fetchPage(hash[0]);
         if(hash[1])
             $("#" + hash[1]).get(0).scrollIntoView();
@@ -66,6 +63,7 @@ function onHashChange() {
             $("html").animate({"scrollTop": 0}, "medium");
     } else {
         history.replaceState(history.state, document.title, "#" + LastURL + location.hash);
+        onHashChange();
     }
 }
 
@@ -74,12 +72,14 @@ function onToggleComments() {
     $("#footer-menu-comments").text(($("#footer-comments").is(":visible") ? "◇ 隐藏" : "◆ 显示") + "评论区");
 }
 
+marked.setOptions(_Blog.marked);
+$("#loading-oops-retry").click(onHashChange);
+$("#footer-menu-comments").click(onToggleComments);
 $(window).bind("hashchange", function(e) {
     e.preventDefault();
     onHashChange();
 });
-$("#loading-oops-retry").click(onHashChange);
-$("#footer-menu-comments").click(onToggleComments);
+
 onHashChange();
 
 }); //$(document).ready
