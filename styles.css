@@ -101,6 +101,11 @@ blockquote {
 
 #footer-menu {
     font-size: 85%;
+    word-break: keep-all;
+}
+
+#footer-menu a {
+    white-space: nowrap;
 }
 
 #footer-license {
