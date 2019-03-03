@@ -68,8 +68,8 @@ function onHashChange() {
 }
 
 function onToggleComments() {
+    $("#footer-menu-comments").text(($("#footer-comments").is(":visible") ? "◆ 显示" : "◇ 隐藏") + "评论区");
     $("#footer-comments").slideToggle("fast");
-    $("#footer-menu-comments").text(($("#footer-comments").is(":visible") ? "◇ 隐藏" : "◆ 显示") + "评论区");
 }
 
 marked.setOptions(_Blog.marked);
