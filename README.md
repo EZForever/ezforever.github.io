@@ -19,18 +19,19 @@ Less than 20KB in size, whole (uncompressed) framework is even smaller than the 
 | :------- | :-------- |
 | Inspiration | [TexMe][1] (Huge thanks!) |
 | Web hosting | [GitHub Pages][2] (without Jekyll) |
-| Styling | TexMe (most CSS), GitHub (some tweaks) |
-| Markdown parsing | ~~TexMe~~ [Marked][3] |
-| Code highlighting | [highlight.js][4] |
-| Commenting | [Gitment][5] (in [Chinese][6]) |
+| Styling | TexMe (base CSS), [this page][3] (content appearance) and GitHub (some tweaks) |
+| Markdown parsing | ~~TexMe~~ [Marked][4] |
+| Code highlighting | [highlight.js][5] |
+| Commenting | [Gitment][6] (in [Chinese][7]) |
 | Misc things | [jQuery][N] (aka the javascript life-saver) |
 
 [1]: https://github.com/susam/texme
 [2]: https://pages.github.com/
-[3]: https://marked.js.org/
-[4]: https://highlightjs.org/
-[5]: https://github.com/imsun/gitment
-[6]: https://github.com/imsun/gitment/issues/104
+[3]: http://scp-wiki-cn.wikidot.com/component:ar-theme
+[4]: https://marked.js.org/
+[5]: https://highlightjs.org/
+[6]: https://github.com/imsun/gitment
+[7]: https://github.com/imsun/gitment/issues/104
 [N]: https://jquery.com/
 
 ### How to use

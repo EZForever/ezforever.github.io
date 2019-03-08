@@ -73,6 +73,20 @@ blockquote {
     padding: 0 1em;
 }
 
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+}
+
+table td, table th {
+    border: 1px solid #dfe2e5;
+    padding: 6px 12px;
+}
+
 @media screen and (min-width: 40em) {
     body {
         background: #444;
