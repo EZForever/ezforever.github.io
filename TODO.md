@@ -8,16 +8,23 @@ Finished things will still be here until next TODO update.
   - How?
 
 ## Features (Maybe RIP)
+- [ ] Footnotes
+  - https://michelf.ca/projects/php-markdown/extra/#footnotes
+  - https://daringfireball.net/2005/07/footnotes
+  - And some other ideas on that page
+  - Implemention idea: if a reference link's text starts with a `^`, strip it and add a `<sup>` wrapper
 - [ ] Some ideas from [here][BeyondMarkdown]
   - Raw code injecting: Code block + `{=html}`
-    - Also `js`, `css`, `latex`
+    - Also (mainly) `js`, `css`, `latex`
   - Header mark: `{#myheader}`
   - Inline attributes/classes, like `{> blue}`
-    - Affects a whole block (`<p>`, `<blockquote>`, `<pre>`, etc)
-    - Preset symbolic classes: `< > = ^ _`
-- [ ] DIY markers: `^Hello^` == `<sup>Hello</sup>`, etc
-  - ~~May~~ not a good idea, use inline attributes like above
-  - What's the marker for `<sub>`?
+    - Preset classes:
+      - `< > =`
+        - Text align: left, right, center
+        - Affects a whole block (`<p>`, `<blockquote>`, `<pre>`, etc)
+      - `^ _`
+        - `<sup>` and `<sub>`
+        - Affect area?
 - [ ] Plugins
   - Like `{module collapse}` + `{collapse}xxx{/collapse}`
   - Support attributes: `{collapse show="+" hide="-"}xxx{/collapse}`
