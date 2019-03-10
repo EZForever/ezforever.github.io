@@ -4,8 +4,8 @@ Finished things will still be here until next TODO update.
 ## WIP
 - [x] README for `.io` repo
 - [x] `<table>` style
-- [x] Delayload Gitment (It's too darn slow)
-  - Somewhat ugly; will change soon
+- [ ] Delayload Gitment (It's too darn slow)
+  - How?
 
 ## Features (Maybe RIP)
 - [ ] Footnotes

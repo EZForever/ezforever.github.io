@@ -38,18 +38,13 @@ function renderPage(text, url) {
 
     $("main img").lazyload({effect : "fadeIn"}); 
 
+    //$("#loading-progress").text("Loading comments...");
     _Blog.gitment.id = url;
     _Blog.gitment.title = title;
-    renderComments();
+    new Gitment(_Blog.gitment).render("comments-gitment");
 
     $("#loading-progress").text("Loaded!");
     $("#loading").fadeOut("slow");
-}
-
-function renderComments() {
-    if(!window.Gitment) return;
-    //$("#loading-progress").text("Loading comments...");
-    new Gitment(_Blog.gitment).render("comments");
 }
 
 function onLoadError() {
@@ -86,11 +81,5 @@ $(window).bind("hashchange", function(e) {
 });
 
 onHashChange();
-
-//Temporary method; should and will change
-$("body").append("<style type='text/css'>@import '" + _Blog.gitment.css + "';</style>");
-$.getScript(_Blog.gitment.js, function(resp, stat) {
-    renderComments();
-});
 
 }); //$(document).ready
