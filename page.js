@@ -36,7 +36,7 @@ function renderPage(text, url) {
     document.title = title + " - EZForever@GitHub";
     $("#footer-menu-source").attr("href", _Blog.contentPath + url);
 
-    $("main img").lazyload({effect : "fadeIn"}); 
+    //$("main img").lazyload({effect : "fadeIn"}); 
 
     //$("#loading-progress").text("Loading comments...");
     _Blog.gitment.id = url;
