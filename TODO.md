@@ -4,9 +4,9 @@ Finished things will still be here until next TODO update.
 ## WIP
 - [x] README for `.io` repo
 - [x] `<table>` style
-- [ ] Gitment servers are down now
+- [x] Gitment servers are down now
   - Need a new source for Chinese UI
-  - Need to change OAuth URL from `https://gh-oauth.imsun.net` to `https://cors-anywhere.herokuapp.com/github.com:443/login/oauth/access_token`
+  - Need to change OAuth URL
 
 ## Features (Maybe RIP)
 - [ ] Footnotes
