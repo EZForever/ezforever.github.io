@@ -23,9 +23,10 @@ Finished things will still be here until next TODO update.
       - `< > =`
         - Text align: left, right, center
         - Affects a whole block (`<p>`, `<blockquote>`, `<pre>`, etc)
-      - `^ _`
-        - `<sup>` and `<sub>`
+      - `^ v _`
+        - `<sup>`, `<sub>` and `<u>`
         - Affect area?
+      - Advanced effects can be added by plugins/CSS, like `.censored {color: black; background-color: black;}` or `.blur {color: transparent; text-shadow: 0 0 6px rgba(0,0,0,.3);}`
 - [ ] Plugins
   - Like `{module collapse}` + `{collapse}xxx{/collapse}`
   - Support attributes: `{collapse show="+" hide="-"}xxx{/collapse}`
