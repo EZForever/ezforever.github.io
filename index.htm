@@ -4,31 +4,17 @@
         <title>EZForever@GitHub</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- jQuery -->
-        <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
-        <!-- script src="https://cdn.jsdelivr.net/npm/jquery-lazyload"></script -->
-        <!-- highlight.js -->
-        <style type="text/css">@import "hljs.css";</style>
-        <script src="https://cdn.jsdelivr.net/npm/highlightjs"></script>
-        <!-- Marked -->
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <!-- Gitment-mod -->
-        <link rel="stylesheet" href="https://ezforever.github.io/gitment-mod/theme/default.css">
-        <script src="https://ezforever.github.io/gitment-mod/gitment.browser.js" type="module"></script>
-        <!-- My own code -->
+        <!-- Base style must load first -->
         <style type="text/css">@import "styles.css";</style>
-        <script src="config.js"></script>
-        <script src="page.js"></script>
     </head>
     <body>
+        <code id="loading" style="display:none;">
+            <div id="loading-progress">Loading...</div>
+            <div id="loading-oops">
+                Please <a id="loading-oops-retry" href="javascript:;">Try Again</a> or <a href="javascript:history.go(-1);">Go Back</a>.
+            </div>
+        </code>
         <main>
-            <code id="loading" style="display:none;">
-                <!-- &#8801; -->
-                <div id="loading-progress">Loading...</div>
-                <div id="loading-oops">
-                    Please <a id="loading-oops-retry" href="javascript:;">Try Again</a> or <a href="javascript:history.go(-1);">Go Back</a>.
-                </div>
-            </code>
             <div id="main">
                 <p>Loading maybe...</p>
             </div>
@@ -47,5 +33,19 @@
                 </span>
             </div>
         </main>
+        <!-- jQuery -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+        <!-- script src="https://cdn.jsdelivr.net/npm/jquery-lazyload"></script -->
+        <!-- highlight.js -->
+        <style type="text/css">@import "hljs.css";</style>
+        <script src="https://cdn.jsdelivr.net/npm/highlightjs"></script>
+        <!-- Marked -->
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <!-- Gitment-mod -->
+        <link rel="stylesheet" href="https://ezforever.github.io/gitment-mod/theme/default.css">
+        <script src="https://ezforever.github.io/gitment-mod/gitment.browser.js" type="module"></script>
+        <!-- My own code -->
+        <script src="config.js"></script>
+        <script src="page.js"></script>
     </body>
 </html>
