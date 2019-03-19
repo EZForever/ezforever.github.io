@@ -31,7 +31,7 @@ Less than 20KB in size, whole (uncompressed) framework is even smaller than the 
 [4]: https://marked.js.org/
 [5]: https://highlightjs.org/
 [6]: https://github.com/imsun/gitment
-[7]: https://github.com/imsun/gitment/issues/104
+[7]: https://github.com/ezforever/gitment-mod
 [N]: https://jquery.com/
 
 ### How to use
