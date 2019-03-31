@@ -9,9 +9,8 @@ function isPreview() {
 
 function fetchPage(url) {
     if(url.slice(-1) == "/") url += "default.md";
-    $("#loading-progress").text("Loading...");
-    $("#loading-oops").hide();
-    $("#loading").show();
+    $("#toolbar-logo").removeClass("toolbar-logo-error");
+    $("#toolbar-logo").addClass("toolbar-logo-loading");
     $.ajax({
         url: _Blog.contentPath + url,
         cache: !isPreview(),
@@ -28,28 +27,27 @@ function fetchPage(url) {
 }
 
 function renderPage(text, url) {
-    //$("#loading-progress").text("Rendering...");
     LastURL = url;
     $("#main").html(marked(text));
 
     var title = $("main h1:first").text() || url;
     document.title = title + " - EZForever@GitHub";
-    $("#footer-menu-source").attr("href", _Blog.contentPath + url);
+    $("#toolbar-code").attr("href", _Blog.contentPath + url);
 
     //$("main img").lazyload({effect : "fadeIn"}); 
 
-    //$("#loading-progress").text("Loading comments...");
     _Blog.gitment.id = url;
     _Blog.gitment.title = title;
     new Gitment(_Blog.gitment).render("comments-gitment");
 
-    $("#loading-progress").text("Loaded!");
-    $("#loading").fadeOut("slow");
+    $("#toolbar-error").hide();
+    $("#toolbar-logo").removeClass("toolbar-logo-loading");
 }
 
 function onLoadError() {
-    $("#loading-progress").text("Oops! Something failed.");
-    $("#loading-oops").show();
+    $("#toolbar-logo").removeClass("toolbar-logo-loading");
+    $("#toolbar-logo").addClass("toolbar-logo-error");
+    $("#toolbar-error").show();
 }
 
 function onHashChange() {
@@ -68,13 +66,15 @@ function onHashChange() {
 }
 
 function onToggleComments() {
-    $("#footer-menu-comments").text(($("#comments").is(":visible") ? "◆ 显示" : "◇ 隐藏") + "评论区");
-    $("#comments").slideToggle("fast");
+    $("#toolbar-comments").toggleClass("toolbar-comments-shown");
+    $("#comments").slideToggle("fast", () => {
+        $("#comments").get(0).scrollIntoView();
+    });
 }
 
 marked.setOptions(_Blog.marked);
-$("#loading-oops-retry").click(onHashChange);
-$("#footer-menu-comments").click(onToggleComments);
+$("#toolbar-comments").click(onToggleComments);
+$("#toolbar-reload").click(onHashChange);
 $(window).bind("hashchange", function(e) {
     e.preventDefault();
     onHashChange();

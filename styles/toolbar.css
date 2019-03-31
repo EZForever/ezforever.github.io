@@ -1,0 +1,70 @@
+#toolbar {
+    position: fixed;
+    left: 0.5em;
+    top: 0.5em;
+    width: 2.5em;
+    height: 2.5em;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 3;
+}
+
+#toolbar:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px #000;
+    height: auto;
+}
+
+#toolbar-logo {
+    width: 2.5em;
+    height: 2.5em;
+    filter: saturate(300%) hue-rotate(180deg);
+}
+
+#toolbar-error {
+    position: fixed;
+    left: 0.5em;
+    top: 0.5em;
+    width: auto;
+    height: 2.5em;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px #000;
+    z-index: 2;
+}
+
+.toolbar-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.5em;
+    height: 1.5em;
+    border: 0.5em solid transparent;
+    stroke: #abcdef;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.toolbar-logo-loading {
+    animation: hue-spin 3s infinite;
+}
+
+.toolbar-logo-error {
+    animation: logo-fall 1.5s;
+    transform: rotate(90deg);
+}
+
+.toolbar-comments-shown {
+    fill: #f6fafd;
+}
+
+@keyframes hue-spin {
+    0%   { filter: saturate(300%) hue-rotate(180deg); }
+    100% { filter: saturate(300%) hue-rotate(540deg); }
+}
+
+@keyframes logo-fall {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(90deg); }
+}
+

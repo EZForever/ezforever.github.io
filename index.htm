@@ -4,16 +4,35 @@
         <title>EZForever@GitHub</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Base style must load first -->
-        <style type="text/css">@import "styles.css";</style>
+        <!-- Base styles must load first -->
+        <style type="text/css">@import "styles/page.css";</style>
+        <style type="text/css">@import "styles/toolbar.css";</style>
     </head>
     <body>
-        <code id="loading" style="display:none;">
-            <div id="loading-progress">Loading...</div>
-            <div id="loading-oops">
-                Please <a id="loading-oops-retry" href="javascript:;">Try Again</a> or <a href="javascript:history.go(-1);">Cancel</a>.
-            </div>
-        </code>
+        <div id="toolbar">
+            <img id="toolbar-logo" class="toolbar-logo-loading" src="/favicon.ico" title="╭( `∀´ )╯" />
+            <a id="toolbar-home" class="toolbar-icon" href="#/" title="主页">
+                <svg viewbox="0 0 32 32"><path d="M12 20 L12 30 4 30 4 12 16 2 28 12 28 30 20 30 20 20 Z" /></svg>
+            </a>
+            <a id="toolbar-top" class="toolbar-icon" href="#main" title="返回顶部">
+                <svg viewbox="0 0 32 32"><path d="M30 20 L16 8 2 20" /></svg>
+            </a>
+            <a id="toolbar-comments" class="toolbar-icon" href="javascript:;" title="评论区">
+                <svg viewbox="0 0 32 32"><path d="M2 4 L30 4 30 22 16 22 8 29 8 22 2 22 Z" /></svg>
+            </a>
+            <a id="toolbar-code" class="toolbar-icon" href="" title="查看源代码" target="_blank" rel="noopener noreferrer">
+                <svg viewbox="0 0 32 32"><path d="M10 9 L3 17 10 25 M22 9 L29 17 22 25 M18 7 L14 27" /></svg>
+            </a>
+        </div>
+        <div id="toolbar-error" style="display: none;">
+            <a class="toolbar-icon"></a>
+            <a id="toolbar-reload" class="toolbar-icon" href="javascript:;" title="重新加载">
+                <svg viewbox="0 0 32 32"><path d="M29 16 C29 22 24 29 16 29 8 29 3 22 3 16 3 10 8 3 16 3 21 3 25 6 27 9 M20 10 L27 9 28 2" /></svg>
+            </a>
+            <a id="toolbar-cancel" class="toolbar-icon" href="javascript:history.go(-1);" title="取消">
+                <svg viewbox="0 0 32 32"><path d="M2 30 L30 2 M30 30 L2 2" /></svg>
+            </a>
+        </div>
         <main>
             <div id="main">
                 <p>Loading maybe...</p>
@@ -24,20 +43,17 @@
             </fieldset>
             <div id="footer">
                 <hr />
-                <span id="footer-license"><a href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="CC BY-SA 4.0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a></span>
-                <span id="footer-menu">
-                    <a id="footer-menu-comments" href="javascript:;">◆ 显示评论区</a>&ensp;
-                    <a id="footer-menu-fp" href="#/">※ 主页</a>&ensp;
-                    <a id="footer-menu-top" href="#main">※ 返回顶部</a>&ensp;
-                    <a id="footer-menu-source" href="" target="_blank" rel="noopener noreferrer">※ 查看源代码</a>
-                </span>
+                <a id="footer-license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img alt="CC BY-SA 4.0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" />
+                </a>
+                Inspired &amp; powered by <a href="https://github.com/ezforever/ezforever.github.io#how-its-made">many projects</a>.
             </div>
         </main>
         <!-- jQuery -->
         <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
         <!-- script src="https://cdn.jsdelivr.net/npm/jquery-lazyload"></script -->
         <!-- highlight.js -->
-        <style type="text/css">@import "hljs.css";</style>
+        <style type="text/css">@import "styles/hljs.css";</style>
         <script src="https://cdn.jsdelivr.net/npm/highlightjs"></script>
         <!-- Marked -->
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>

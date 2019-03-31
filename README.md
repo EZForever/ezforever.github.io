@@ -23,6 +23,7 @@ Less than 20KB in size, whole (uncompressed) framework is even smaller than the 
 | Markdown parsing | ~~TexMe~~ [Marked][4] |
 | Code highlighting | [highlight.js][5] |
 | Commenting | [Gitment][6] (in [Chinese][7]) |
+| Toolbar icons | [bytesize-icons][8] |
 | Misc things | [jQuery][N] (aka the javascript life-saver) |
 
 [1]: https://github.com/susam/texme
@@ -32,6 +33,7 @@ Less than 20KB in size, whole (uncompressed) framework is even smaller than the 
 [5]: https://highlightjs.org/
 [6]: https://github.com/imsun/gitment
 [7]: https://github.com/ezforever/gitment-mod
+[8]: https://github.com/danklammer/bytesize-icons
 [N]: https://jquery.com/
 
 ### How to use
