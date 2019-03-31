@@ -58,6 +58,12 @@
     fill: #f6fafd;
 }
 
+@media print {
+    #toolbar {
+        display: none;
+    }
+}
+
 @keyframes hue-spin {
     0%   { filter: saturate(300%) hue-rotate(180deg); }
     100% { filter: saturate(300%) hue-rotate(540deg); }
