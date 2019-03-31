@@ -55,10 +55,7 @@ function onHashChange() {
     if(hash[0][0] == "/") {
         if(hash[0] != LastURL || hash[0] == "/")
             fetchPage(hash[0]);
-        if(hash[1])
-            $("#" + hash[1]).get(0).scrollIntoView();
-        else
-            $("html").animate({"scrollTop": 0}, "medium");
+        $("#" + (hash[1] || "main")).get(0).scrollIntoView();
     } else {
         history.replaceState(history.state, document.title, "#" + LastURL + location.hash);
         onHashChange();
