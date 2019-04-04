@@ -61,6 +61,8 @@ function onHighlight(code, lang) {
     try {
         return hljs.highlight(lang, code).value;
     } catch(e) {
+        if(lang)
+            console.error(e);
         return code;
     }
 }
