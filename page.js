@@ -63,9 +63,11 @@ function onHashChange() {
         if(hash[0] == LastURL && hash[0] != "/")
             hash[0] = undefined;
         fetchPage(hash[0], () => {
-            var elemAnchor = $("#" + unescape(hash[1] || "main")).get(0);
-            if(elemAnchor)
-                elemAnchor.scrollIntoView();
+            if(hash[1] != undefined) {
+                var elemAnchor = $("#" + unescape(hash[1] || "main")).get(0);
+                if(elemAnchor)
+                    elemAnchor.scrollIntoView();
+            }
         });
     } else {
         history.replaceState(history.state, document.title, "#" + LastURL + location.hash);
