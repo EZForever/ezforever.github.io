@@ -57,6 +57,14 @@ function onLoadError() {
     $("#toolbar-error").show();
 }
 
+function onHighlight(code, lang) {
+    try {
+        return hljs.highlight(lang, code).value;
+    } catch(e) {
+        return code;
+    }
+}
+
 function onHashChange() {
     var hash = location.hash.slice(1).split("#");
     if(hash[0][0] == "/") {
@@ -82,7 +90,9 @@ function onToggleComments() {
     });
 }
 
+_Blog.marked.highlight = onHighlight;
 marked.setOptions(_Blog.marked);
+
 $("#toolbar-comments").click(onToggleComments);
 $("#toolbar-reload").click(onHashChange);
 $(window).bind("hashchange", function(e) {

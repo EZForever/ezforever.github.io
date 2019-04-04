@@ -2,10 +2,7 @@ window._Blog = window._Blog || {
     titleSuffix: " - EZForever@GitHub",
     contentPath: "/blog",
     marked: {
-        xhtml: true,
-        highlight: function(code, lang) {
-            return lang ? hljs.highlight(lang, code).value : code;
-        }
+        xhtml: true
     },
     gitment: {
         id: "",
