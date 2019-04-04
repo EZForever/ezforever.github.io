@@ -7,8 +7,13 @@ function isPreview() {
     return /localhost|[^\.]127\./i.test(window.origin);
 }
 
-function fetchPage(url) {
-    if(url.slice(-1) == "/") url += "default.md";
+function fetchPage(url, callback) {
+    if(!url) {
+        callback();
+        return;
+    }
+    if(url.slice(-1) == "/")
+        url += "default.md";
     $("#toolbar-logo").removeClass("toolbar-logo-error");
     $("#toolbar-logo").addClass("toolbar-logo-loading");
     $.ajax({
@@ -17,7 +22,7 @@ function fetchPage(url) {
         error: onLoadError,
         success: function(text) {
             try {
-                renderPage(text, url);
+                renderPage(text, url, callback);
             } catch(e) {
                 console.error(e);
                 onLoadError();
@@ -26,7 +31,7 @@ function fetchPage(url) {
     });
 }
 
-function renderPage(text, url) {
+function renderPage(text, url, callback) {
     LastURL = url;
     $("#main").html(marked(text));
 
@@ -39,6 +44,8 @@ function renderPage(text, url) {
     _Blog.gitment.id = url;
     _Blog.gitment.title = title;
     new Gitment(_Blog.gitment).render("comments-gitment");
+
+    callback();
 
     $("#toolbar-error").hide();
     $("#toolbar-logo").removeClass("toolbar-logo-loading");
@@ -53,9 +60,13 @@ function onLoadError() {
 function onHashChange() {
     var hash = location.hash.slice(1).split("#");
     if(hash[0][0] == "/") {
-        if(hash[0] != LastURL || hash[0] == "/")
-            fetchPage(hash[0]);
-        $("#" + (hash[1] || "main")).get(0).scrollIntoView();
+        if(hash[0] == LastURL && hash[0] != "/")
+            hash[0] = undefined;
+        fetchPage(hash[0], () => {
+            var elemAnchor = $("#" + unescape(hash[1] || "main")).get(0);
+            if(elemAnchor)
+                elemAnchor.scrollIntoView();
+        });
     } else {
         history.replaceState(history.state, document.title, "#" + LastURL + location.hash);
         onHashChange();
