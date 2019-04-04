@@ -31,7 +31,7 @@ function renderPage(text, url) {
     $("#main").html(marked(text));
 
     var title = $("main h1:first").text() || url;
-    document.title = title + " - EZForever@GitHub";
+    document.title = title + _Blog.titleSuffix;
     $("#toolbar-code").attr("href", _Blog.contentPath + url);
 
     //$("main img").lazyload({effect : "fadeIn"}); 

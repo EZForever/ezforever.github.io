@@ -46,11 +46,11 @@ If you decide to create a blog based on this platform, here's a checklist of nec
   - You might want to rename your fork for a shorter URL
 - [ ] [Register an OAuth application](https://github.com/settings/applications/new) for Gitment
 - [ ] Modify `config.js`:
+  - `titleSuffix`: String to put after your page title
   - `contentPath`: Path to your Markdown files on web server, usually `/<name of your content repo>`
   - `gitment.owner`: Your GitHub username
   - `gitment.repo`: Name of your content repo
   - `gitment.oauth`: Client ID & Client Secret of your newly-created OAuth application
-- [ ] Modify `index.htm` & `page.js` to change page title
 - [ ] Commit your blog frontpage with filename `default.md` onto your content repo
 - [ ] Check if your blog works
 

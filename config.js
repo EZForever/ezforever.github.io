@@ -1,4 +1,5 @@
 window._Blog = window._Blog || {
+    titleSuffix: " - EZForever@GitHub",
     contentPath: "/blog",
     marked: {
         xhtml: true,
