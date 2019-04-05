@@ -1,15 +1,16 @@
 $(document).ready(function() {
 
-var LastURL = "/";
+var lastURL = "/";
+var anchor = "";
 
 function isPreview() {
     //If I'm debugging this locally
     return /localhost|[^\.]127\./i.test(window.origin);
 }
 
-function fetchPage(url, callback) {
+function fetchPage(url) {
     if(!url) {
-        callback();
+        onLoaded();
         return;
     }
     if(url.slice(-1) == "/")
@@ -22,7 +23,7 @@ function fetchPage(url, callback) {
         error: onLoadError,
         success: function(text) {
             try {
-                renderPage(text, url, callback);
+                renderPage(text, url);
             } catch(e) {
                 console.error(e);
                 onLoadError();
@@ -31,9 +32,9 @@ function fetchPage(url, callback) {
     });
 }
 
-function renderPage(text, url, callback) {
-    LastURL = url;
-    $("#main").html(marked(text));
+function renderPage(text, url) {
+    lastURL = url;
+    $("#contents").html(marked(text)).promise().then(onLoaded);
 
     var title = $("main h1:first").text() || url;
     document.title = title + _Blog.titleSuffix;
@@ -45,10 +46,14 @@ function renderPage(text, url, callback) {
     _Blog.gitment.title = title;
     new Gitment(_Blog.gitment).render("comments-gitment");
 
-    callback();
-
     $("#toolbar-error").hide();
     $("#toolbar-logo").removeClass("toolbar-logo-loading");
+}
+
+function onLoaded() {
+    var elemAnchor = $("#" + unescape(anchor || "top")).get(0);
+    if(elemAnchor)
+        elemAnchor.scrollIntoView();
 }
 
 function onLoadError() {
@@ -70,17 +75,12 @@ function onHighlight(code, lang) {
 function onHashChange() {
     var hash = location.hash.slice(1).split("#");
     if(hash[0][0] == "/") {
-        if(hash[0] == LastURL && hash[0] != "/")
+        anchor = hash[1];
+        if(hash[0] == lastURL && hash[0] != "/")
             hash[0] = undefined;
-        fetchPage(hash[0], () => {
-            if(hash[1] != undefined) {
-                var elemAnchor = $("#" + unescape(hash[1] || "main")).get(0);
-                if(elemAnchor)
-                    elemAnchor.scrollIntoView();
-            }
-        });
+        fetchPage(hash[0]);
     } else {
-        history.replaceState(history.state, document.title, "#" + LastURL + location.hash);
+        history.replaceState(history.state, document.title, "#" + lastURL + location.hash);
         onHashChange();
     }
 }
