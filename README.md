@@ -51,6 +51,8 @@ If you decide to create a blog based on this platform, here's a checklist of nec
   - `gitment.owner`: Your GitHub username
   - `gitment.repo`: Name of your content repo
   - `gitment.oauth`: Client ID & Client Secret of your newly-created OAuth application
+  - `marked._headingsEx`: True if you want to have a permalink hashtag show on every headings
+  - `marked._extensions`: True if you want to use `<pre>`-based extensions (Documentions coming soon)
 - [ ] Commit your blog frontpage with filename `default.md` onto your content repo
 - [ ] Check if your blog works
 

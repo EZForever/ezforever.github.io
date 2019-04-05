@@ -2,11 +2,7 @@
 Finished things will still be here until next TODO update.
 
 ## WIP
-- [x] README for `.io` repo
-- [x] `<table>` style
-- [x] Gitment servers are down now
-  - Need a new source for Chinese UI
-  - Need to change OAuth URL
+- [ ] Docs for extensions
 
 ## Features (Maybe RIP)
 - [ ] Footnotes
@@ -28,13 +24,13 @@ Finished things will still be here until next TODO update.
         - Affect area?
       - Advanced effects can be added by plugins/CSS, like `.censored {color: black; background-color: black;}` or `.blur {color: transparent; text-shadow: 0 0 6px rgba(0,0,0,.3);}`
 - [ ] Plugins (halfway!)
-  - Like `{module collapse}` + `{collapse}xxx{/collapse}`
-  - Support attributes: `{collapse show="+" hide="-"}xxx{/collapse}`
+  - ~~Like `{module collapse}` + `{collapse}xxx{/collapse}`~~
+  - ~~Support attributes: `{collapse show="+" hide="-"}xxx{/collapse}`~~
   - Plugins in mind:
     - `{toc}`
       - Generates a Table of Contents based on header markers
       - Collapsible of course
-    - `{collapse}`
+    - ~~`{collapse}`~~
       - Collapsible blocks
       - http://scp-wiki-cn.wikidot.com/wiki-syntax#toc17
     - `{tabview}`
