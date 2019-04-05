@@ -2,7 +2,9 @@ window._Blog = window._Blog || {
     titleSuffix: " - EZForever@GitHub",
     contentPath: "/blog",
     marked: {
-        xhtml: true
+        xhtml: true,
+        _headingsEx: true,
+        _extensions: true
     },
     gitment: {
         id: "",

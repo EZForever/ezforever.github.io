@@ -3,7 +3,7 @@ A frontend-only *blog platform*.
 
 Written with 100% HTML/CSS/JS(jQuery), all you need for this site to work is a `httpd`, no matter it's from busybox or apache.
 
-Less than 20KB in size, whole (uncompressed) framework is even smaller than the favicon itself!
+Only about 20KB in size (uncompressed), whole framework is even smaller than the favicon itself!
 
 ## But why?
 1. A well-working web hosting platform does not exist when you're Chinese and lack of financial support.

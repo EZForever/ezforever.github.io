@@ -1,0 +1,31 @@
+/* Heading Ex */
+.heading:hover a.permalink:before {
+    margin: 0 0.5em;
+    font-size: 0.85em;
+    content: "#";
+}
+
+/* {collapse} */
+
+.collapse>legend {
+    cursor: pointer;
+}
+
+.collapse {
+    border-width: 1px;
+    border-style: dashed;
+}
+
+.collapse-hidden {
+    max-height: 0.5em;
+    overflow: hidden;
+    border-width: 1px 0 0 0;
+}
+
+.collapse>legend:before {
+    content: "◇ ";
+}
+
+.collapse-hidden>legend:before {
+    content: "◆ ";
+}

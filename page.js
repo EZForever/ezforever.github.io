@@ -51,9 +51,20 @@ function renderPage(text, url) {
 }
 
 function onLoaded() {
+    // Anchoring
     var elemAnchor = $("#" + unescape(anchor || "top")).get(0);
     if(elemAnchor)
         elemAnchor.scrollIntoView();
+
+    // Extension function "collapse"
+    $(".collapse>legend").each(function() {
+        $(this).click(function() {
+            $(this).parent(".collapse").toggleClass("collapse-hidden");
+        });
+    });
+
+    // Clear empty <pre>s
+    //$("pre>code:empty").parent().remove();
 }
 
 function onLoadError() {
