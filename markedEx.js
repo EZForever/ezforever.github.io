@@ -21,7 +21,7 @@ mdRenderer.code = function(code, infostring, escaped) {
     if(this.options._extensions) {
         var oParams = lang.match(/^\{(\w+) *(.*)\}$/);
         if(oParams)
-            return this._extension(escaped ? unescape(code) : code, oParams);
+            return this._extension(escaped ? this.unescape(code) : code, oParams);
     }
 
     if(this.options.highlight) {
@@ -33,9 +33,9 @@ mdRenderer.code = function(code, infostring, escaped) {
     }
 
     if(!lang)
-        return `<pre><code>${escaped ? code : escape(code, true)}</code></pre>\n`;
+        return `<pre><code>${escaped ? code : this.escape(code, true)}</code></pre>\n`;
 
-    return `<pre><code class="${this.options.langPrefix + escape(lang, true)}">${escaped ? code : escape(code, true)}</code></pre>\n`;
+    return `<pre><code class="${this.options.langPrefix + this.escape(lang, true)}">${escaped ? code : this.escape(code, true)}</code></pre>\n`;
 };
 
 mdRenderer._extension = function(sContent, oParams) {
@@ -60,6 +60,46 @@ mdRenderer._extensions = {
         `;
     }
 };
+
+// Copied from marked.js
+
+mdRenderer.escape = function(html, encode) {
+    if (encode) {
+        if (this.escapeTest.test(html))
+            return html.replace(this.escapeReplace, function (ch) { return mdRenderer.escapeReplacements[ch]; });
+    } else {
+        if (this.escapeTestNoEncode.test(html))
+            return html.replace(this.escapeReplaceNoEncode, function (ch) { return mdRenderer.escapeReplacements[ch]; });
+    }
+  return html;
+}
+
+mdRenderer.escapeTest = /[&<>"']/;
+mdRenderer.escapeReplace = /[&<>"']/g;
+mdRenderer.escapeReplacements = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+};
+
+mdRenderer.escapeTestNoEncode = /[<>"']|&(?!#?\w+;)/;
+mdRenderer.escapeReplaceNoEncode = /[<>"']|&(?!#?\w+;)/g;
+
+mdRenderer.unescape = function(html) {
+    // explicitly match decimal, hex, and named HTML entities
+    return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/ig, function(_, n) {
+        n = n.toLowerCase();
+        if (n === 'colon') return ':';
+        if (n.charAt(0) === '#') {
+            return n.charAt(1) === 'x'
+            ? String.fromCharCode(parseInt(n.substring(2), 16))
+            : String.fromCharCode(+n.substring(1));
+        }
+        return '';
+    });
+}
 
 marked.setOptions({renderer: mdRenderer});
 
