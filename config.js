@@ -3,7 +3,7 @@ window._Blog = window._Blog || {
     contentPath: "/blog",
     marked: {
         xhtml: true,
-        _headingsEx: true,
+        _headingsEx: false, // Buggy; have no idea how to fix
         _extensions: true
     },
     gitment: {
