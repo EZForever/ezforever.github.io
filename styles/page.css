@@ -49,7 +49,7 @@ img {
 pre, code {
     background: #eaeef3;
     border-radius: 3px;
-    font-family: Consolas, Liberation Mono, Menlo, Courier, monospace;
+    font-family: Roboto Mono, Consolas, Liberation Mono, Menlo, Courier, monospace;
 }
 
 pre {
