@@ -79,5 +79,5 @@ Whatever you do, here are some rules that you'd better obey:
 
 [More highlight.js themes](https://github.com/highlightjs/highlight.js/tree/master/src/styles)
 
-[Gitment repo page (with configuration details)][5]
+[Gitment repo page (with configuration details)][https://github.com/ezforever/gitment-mod]
 
